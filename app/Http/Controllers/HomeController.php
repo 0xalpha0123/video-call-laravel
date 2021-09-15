@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $reservation = Reservation::createReservation();
 
-        return view('home', [
+        return view('home.main', [
             'reservation' => $reservation,
         ]);
     }
