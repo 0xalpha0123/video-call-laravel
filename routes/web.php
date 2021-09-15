@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('videochat/create/{reservation_id}',         [App\Http\Controllers\VideoChatController::class, 'create'])                   ->name('videochat.create');                                 
-Route::get('videochat/join/{reservation_id}',           [App\Http\Controllers\VideoChatController::class, 'join'])                     ->name('videochat.join');                                 
+Route::get('videochat/create/{reservation_id}', [App\Http\Controllers\VideoChatController::class, 'create'])->name('videochat.create');
 
-Route::post('ajax/videochat/authentication',            [App\Http\Controllers\VideoChatController::class, 'authentication'])           ->name('ajax.videochat.authentication');            
+Route::get('videochat/join/{reservation_id}', [App\Http\Controllers\VideoChatController::class, 'join'])->name('videochat.join');
+
+Route::post('ajax/videochat/authentication', [App\Http\Controllers\VideoChatController::class, 'authentication'])->name('ajax.videochat.authentication');
