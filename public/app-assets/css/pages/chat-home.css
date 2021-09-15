@@ -6,3 +6,7 @@
 .home-form {
     text-align: center;
 }
+
+.reservation-url {
+    word-break: break-word;
+}
