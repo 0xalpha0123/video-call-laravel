@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Reservation;
 use App\Models\VideoChatManager;
+use Illuminate\Support\Str;
 
 class VideoChatController extends Controller
 {
@@ -17,6 +18,29 @@ class VideoChatController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+    }
+
+    public function index($reservation_id)
+    {
+        return view('videochat', [
+            'reservation_id' => $reservation_id,
+            'type' => 'create'
+        ]);
+    }
+
+    /**
+     * Process to create room.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function generateRoom(Request $request)
+    {
+        $userid = $request->input('userid');
+        $random_string = Str::random(6);
+        $reservation_id = date('Y_m_d_His_') . $random_string;
+        return view('room.main', [
+            'reservation_id' => $reservation_id
+        ]);
     }
 
     /**
@@ -32,9 +56,9 @@ class VideoChatController extends Controller
         ]);
     }
 
-    public function join($reservation_id)
+    public function joinRoom($reservation_id)
     {
-        return view('videochat', [
+        return view('room.chat', [
             'reservation_id' => $reservation_id,
             'type' => 'join'
         ]);

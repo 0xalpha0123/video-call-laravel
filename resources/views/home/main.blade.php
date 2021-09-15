@@ -1,7 +1,7 @@
 @extends('layouts.videochat')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/chat-home.css') }}">
 @endsection
 @section('content')
 <div class="container mt-5 ">
@@ -12,7 +12,8 @@
                     <h1 class='text-center mt-2'>IDを入力</h1>
                 </div>
                 <div class="card-body home-form">
-                    <form action="{{route('videochat.create', $reservation['id'])}}" method="get" target='_blank'>
+                    <form action="{{route('room.generate')}}" method="post">
+                        @csrf
                         <input type="text" id="input-userid" class="form-control form-control-lg id-input my-2" name="userid" placeholder="IDを入力"/>
                         <button type="submit" class="btn bg-gradient-primary waves-effect waves-light mt-2" >送&nbsp;&nbsp;&nbsp;信</button>
                     </form>

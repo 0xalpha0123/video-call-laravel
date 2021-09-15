@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Reservation;
 
 class HomeController extends Controller
 {
@@ -24,10 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $reservation = Reservation::createReservation();
-
-        return view('home.main', [
-            'reservation' => $reservation,
-        ]);
+        return view('home.main');
     }
 }
